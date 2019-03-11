@@ -34,17 +34,15 @@ sudo ./px4 mainapp.config
 ```
 
 - Terminal 6: run px4_control. A RViz screen should show up. In this screen you should check the quad's position in Vicon frame (confirming that vicon is seeing the quad), and two images on top: the image on the top left should be in color and displays features recognized by yolo. The image on the top right is in grayscale and displays ORB_SLAM feature recognition. Finally, you should push the Y button on the joystick and thrust with the directional to make sure that you can arm the quad. If you want the quad to hold position, push X on the joystick.
+  - Suggestion: switch the quad to position mode and take it to a position that ORB_SLAM is already recognizing features on the rover.
 ```
 roslaunch px4_control lm_bilbo.launch
 ```
 
-  - Suggestion: switch the quad to position mode and take it to a position that ORB_SLAM is already recognizing features on the rover.
-
 - Terminal 7: if everything looks okay from the previous pre-flight checks, you can start the mission on the last terminal:
+  - Note: if you see an error on this last terminal displaying ```[ERROR] [1551998184.729836557]: Trying to getState() when no goal is running. You are incorrectly using SimpleActionClient```, don't worry. This error message is not really an error and was removed from ROS in January 2019 (https://github.com/ros/actionlib/pull/97), but I didn't update ROS on this computer yet. 
 ```
 roslaunch mission_planner rover_inspection.launch
 ```
-
-  - Note: if you see an error on this last terminal displaying ```[ERROR] [1551998184.729836557]: Trying to getState() when no goal is running. You are incorrectly using SimpleActionClient```, don't worry. This error message is not really an error and was removed from ROS in January 2019 (https://github.com/ros/actionlib/pull/97), but I didn't update ROS on this computer yet. 
 
 - If you want to launch the mission again, stop the nodes running in terminals 5, 6, and 7, then launch them again in that same order (make sure to do the pre-flight checks in Terminal 6!!!!)
