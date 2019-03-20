@@ -52,6 +52,9 @@ sudo apt install terminator
 - Install barrier (optional: barrier allows mouse and keyboard on the jetson to be commanded within the network):
 
 ```
+sudo apt install git cmake make xorg-dev g++ libcurl4-openssl-dev \
+                 libavahi-compat-libdnssd-dev libssl-dev libx11-dev \
+                 libqt4-dev qtbase5-dev
 git clone https://github.com/AkellaSummerResearch/barrier
 cd barrier
 ./clean_build.sh
