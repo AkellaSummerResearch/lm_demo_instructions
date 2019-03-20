@@ -1,0 +1,124 @@
+# TX2 flash instructions
+
+- Flashing the TX2 with the Orbitty carrier
+
+	- Follow the instructions in: ```https://github.com/NVIDIA-AI-IOT/jetson-trashformers/wiki/Jetson%E2%84%A2-Flashing-and-Setup-Guide-for-a-Connect-Tech-Carrier-Board```
+
+	- The video within ```http://connecttech.com/flashing-nvidia-jetson-tx2-tx1-module/``` is also useful for clarifying missing pieces.
+
+- Update and upgrade everything in the TX2
+
+```
+sudo apt update
+sudo apt upgrade
+```
+
+- Install terminator (optional)
+
+```
+sudo apt install terminator
+```
+
+- Install barrier (optional: barrier allows mouse and keyboard on the jetson to be commanded within the network):
+
+```
+git clone https://github.com/AkellaSummerResearch/barrier
+cd barrier
+./clean_build.sh
+cd build
+sudo make install
+```
+
+- Configure barrier to start with terminator (optional)
+
+	- Right-click on terminator window, click on Preferences, within Layouts add Custom command to desired window for barrier to run on: ```/barrier/build/bin/barrierc -f --enable-crypto 192.168.1.200```
+
+- Install librealsense (originally obtained from https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
+
+	- Download the folder from https://utexas.app.box.com/folder/64528736446.
+
+	```
+	./buildPatchedKernelTX.sh
+	./installLibrealsense.sh
+	```
+
+	- Test the realsense:
+
+	```
+	cd /usr/local/bin
+	./realsense-viewer
+	```
+
+- Install realsense ROS packages (originally obtained from https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
+
+	- Install ROS:
+
+	```
+	git clone https://github.com/jetsonhacks/installROSTX2.git
+	cd installROSTX2
+	./installROS.sh -p ros-kinetic-desktop -p ros-kinetic-rgbd-launch
+	./setupCatkinWorkspace.sh
+	```
+
+	- Download the folder from https://utexas.app.box.com/folder/64528654434.
+
+	```
+	./installRealSenseROS.sh
+	```
+
+	- Download the launch files from https://utexas.app.box.com/folder/70574824174, and replace them within ```~/catkin_ws/src/realsense/realsense2_camera/launch```.
+
+	- Test the ROS node:
+
+	```
+	roslaunch realsense2_camera rs_rgbd.launch
+	rosrun image_view image_view image:=<image from desired topic>
+	```
+
+- Install all other ROS nodes
+
+	- Nodes to be installed within catkin_ws:
+
+	```
+	cd ~/catkin_ws/src
+	git clone https://github.com/AkellaSummerResearch/batch_pose_estimator.git
+	git clone https://github.com/marcelinomalmeidan/image_filters.git
+	git clone https://github.com/radionavlab/mg_msgs.git
+	git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
+	git clone https://github.com/mavlink/mavros.git
+	cd mavros
+	git checkout origin/indigo-devel
+	cd ~/catkin_ws
+	catkin_make -DCMAKE_BUILD_TYPE=Release
+	```
+
+	- Install ORB-SLAM2
+
+	```
+	git clone https://github.com/marcelinomalmeidan/ORB_SLAM2
+	cd ORB_SLAM2
+	./build.sh
+	```
+
+- Network settings (change the IP according with desired IP)
+
+	- File within /etc/network/interfaces
+	
+	```
+	# interfaces(5) file used by ifup(8) and ifdown(8)
+	# Include files from /etc/network/interfaces.d:
+	source-directory /etc/network/interfaces.d
+	```
+
+	- File within /etc/network/interfaces.d/eth0
+
+	```
+	auto eth0
+	iface eth0 inet static
+    address 192.168.1.10
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    dns-nameservers 8.8.8.8
+	```
+
+	- Reboot for changes to have an effect
