@@ -1,5 +1,7 @@
 # TX2 flash instructions
 
+This document shows how to flash the TX2 with all dependencies needed for the Lockheed Martin project. I estimate that it takes around 4 hours (unconfirmed) to complete everything in this list.
+
 - Flashing the TX2 with the Orbitty carrier
 
 	- Follow the instructions in: ```https://github.com/NVIDIA-AI-IOT/jetson-trashformers/wiki/Jetson%E2%84%A2-Flashing-and-Setup-Guide-for-a-Connect-Tech-Carrier-Board```
@@ -34,7 +36,7 @@
 	nameserver 8.8.8.8
 	```
 
-	- Reboot for changes to have an effect
+	- Reboot for changes to have an effect: ```sudo reboot```.
 
 - Update and upgrade everything in the TX2
 
@@ -78,7 +80,7 @@ sudo make install
 
 	- Download the folder from https://utexas.app.box.com/folder/64528736446.
 
-	- Before running any executable, give execution permissions to all .sh files within ```buildLibrealsense2TX``` and within ```buildLibrealsense2TX/scripts``` (```chmod +x+u <filename>.sh)```.
+	- Before running any executable, give execution permissions to all .sh files within ```buildLibrealsense2TX``` and within ```buildLibrealsense2TX/scripts``` (```chmod +x+u <filename>.sh)```. Before installing the realsense library, make sure to leave the realsense camera unplugged from the TX2!
 
 	```
 	./buildPatchedKernelTX.sh
@@ -107,15 +109,17 @@ sudo make install
 
 	```
 	./installRealSenseROS.sh
+	cd ~/catkin_ws/src
+	git clone https://github.com/AkellaSummerResearch/realsense.git
+	cd ~/catkin_ws
+	catkin_make -DCMAKE_BUILD_TYPE=Release
 	```
-
-	- Download the launch files from https://utexas.app.box.com/folder/70574824174, and replace them within ```~/catkin_ws/src/realsense/realsense2_camera/launch```.
 
 	- Test the ROS node:
 
 	```
 	roslaunch realsense2_camera rs_rgbd.launch
-	rosrun image_view image_view image:=<image from desired topic>
+	rosrun image_view image_view image:=/camera/color/image_raw
 	```
 
 - Install all other ROS nodes
@@ -128,17 +132,31 @@ sudo make install
 	git clone https://github.com/marcelinomalmeidan/image_filters.git
 	git clone https://github.com/radionavlab/mg_msgs.git
 	git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
-	git clone https://github.com/mavlink/mavros.git
-	cd mavros
-	git checkout origin/indigo-devel
-	cd ~/catkin_ws
 	catkin_make -DCMAKE_BUILD_TYPE=Release
 	```
+
+	- Install ORB-SLAM2 (this is not within catkin_ws)
+
+	- Add the following line to ```~/.bashrc```:
+
+	```
+	export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
+	```	
 
 	- Install ORB-SLAM2
 
 	```
+	sudo apt-get install libglew-dev
+	cd ~
+	git clone https://github.com/stevenlovegrove/Pangolin.git
+	cd Pangolin
+	mkdir build
+	cd build
+	cmake ..
+	cmake --build .
+	cd ~
 	git clone https://github.com/marcelinomalmeidan/ORB_SLAM2
+	source ~/.bashrc
 	cd ORB_SLAM2
 	./build.sh
 	```
