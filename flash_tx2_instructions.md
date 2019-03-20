@@ -78,7 +78,7 @@ sudo make install
 
 - Install librealsense (originally obtained from https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
 
-	- Download the folder from https://utexas.app.box.com/folder/64528736446.
+	- Download the ```buildLibrealsense2TX``` folder from https://utexas.app.box.com/folder/64528736446.
 
 	- Before running any executable, give execution permissions to all .sh files within ```buildLibrealsense2TX``` and within ```buildLibrealsense2TX/scripts``` (```chmod +x+u <filename>.sh)```. Before installing the realsense library, make sure to leave the realsense camera unplugged from the TX2!
 
@@ -105,7 +105,7 @@ sudo make install
 	./setupCatkinWorkspace.sh
 	```
 
-	- Download the folder from https://utexas.app.box.com/folder/64528654434.
+	- Download the ```installRealSenseROSTX2``` folder from https://utexas.app.box.com/folder/64528654434.
 
 	```
 	./installRealSenseROS.sh
