@@ -4,7 +4,7 @@
 
 	- Follow the instructions in: ```https://github.com/NVIDIA-AI-IOT/jetson-trashformers/wiki/Jetson%E2%84%A2-Flashing-and-Setup-Guide-for-a-Connect-Tech-Carrier-Board```
 
-	- The video within ```http://connecttech.com/flashing-nvidia-jetson-tx2-tx1-module/``` is also useful for clarifying missing pieces.
+	- The video within ```http://connecttech.com/flashing-nvidia-jetson-tx2-tx1-module/``` is also useful for clarifying missing pieces. Note that the video does not show how to install important packages, such as CUDA (these are covered at the end of the previous link).
 	
 - Network settings (change the IP according with desired IP)
 
@@ -54,7 +54,7 @@ sudo apt install terminator
 ```
 sudo apt install git cmake make xorg-dev g++ libcurl4-openssl-dev \
                  libavahi-compat-libdnssd-dev libssl-dev libx11-dev \
-                 libqt4-dev qtbase5-dev
+                 libqt4-dev qtbase5-dev xdotool
 git clone https://github.com/AkellaSummerResearch/barrier
 cd barrier
 ./clean_build.sh
@@ -62,13 +62,23 @@ cd build
 sudo make install
 ```
 
-- Configure barrier to start with terminator (optional)
+	- Run barrier once to save fingerprint
 
-	- Right-click on terminator window, click on Preferences, within Layouts add Custom command to desired window for barrier to run on: ```/barrier/build/bin/barrierc -f --enable-crypto 192.168.1.200```
+	```
+	./barrier/build/bin/barrier
+	```
+
+	- Configure barrier to start with terminator
+
+		- Right-click on terminator window, click on Preferences, within Layouts add Custom command to desired window for barrier to run on. You will need two windows: on one, choose the following command (makes mouse visible on startup) ```gsettings set org.gnome.settings-daemon.plugins.cursor active false```, while the following command goes on the second one: ```./barrier/build/bin/barrierc -f --enable-crypto 192.168.1.200```
+
+	- Make terminator open on startup: open ```Startup Applications``` and click on Add. On the desired command, just type ```terminator```, which is the command line to start Terminator.
 
 - Install librealsense (originally obtained from https://www.jetsonhacks.com/2018/07/10/librealsense-update-nvidia-jetson-tx-dev-kits/)
 
 	- Download the folder from https://utexas.app.box.com/folder/64528736446.
+
+	- Before running any executable, give execution permissions to all .sh files within ```buildLibrealsense2TX``` and within ```buildLibrealsense2TX/scripts``` (```chmod +x+u <filename>.sh)```.
 
 	```
 	./buildPatchedKernelTX.sh
