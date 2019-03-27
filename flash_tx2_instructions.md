@@ -4,7 +4,7 @@ This document shows how to flash the TX2 with all dependencies needed for the Lo
 
 - Flashing the TX2 with the Orbitty carrier
 
-	- Follow the instructions in: ```https://github.com/NVIDIA-AI-IOT/jetson-trashformers/wiki/Jetson%E2%84%A2-Flashing-and-Setup-Guide-for-a-Connect-Tech-Carrier-Board```
+	- Follow the instructions in: https://github.com/NVIDIA-AI-IOT/jetson-trashformers/wiki/Jetson%E2%84%A2-Flashing-and-Setup-Guide-for-a-Connect-Tech-Carrier-Board
 
 	- The video within ```http://connecttech.com/flashing-nvidia-jetson-tx2-tx1-module/``` is also useful for clarifying missing pieces. Note that the video does not show how to install important packages, such as CUDA (these are covered at the end of the previous link).
 	
