@@ -89,7 +89,7 @@ sudo make install
 
 	- Test the realsense:
 
-	```
+	``` 
 	cd /usr/local/bin
 	./realsense-viewer
 	```
