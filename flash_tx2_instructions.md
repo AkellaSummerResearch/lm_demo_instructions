@@ -138,6 +138,7 @@ sudo make install
 	git clone https://github.com/marcelinomalmeidan/image_filters.git
 	git clone https://github.com/radionavlab/mg_msgs.git
 	git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
+	git clone https://github.com/ros-perception/image_common.git
 	catkin_make -DCMAKE_BUILD_TYPE=Release
 	```
 
