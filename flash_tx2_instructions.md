@@ -18,7 +18,7 @@ This document shows how to flash the TX2 with all dependencies needed for the Lo
 	source-directory /etc/network/interfaces.d
 	```
 
-	- File within ```/etc/network/interfaces.d/eth0```
+	- File within ```/etc/network/interfaces.d/eth0``` (create the file if it doesn't exist):
 
 	```
 	auto eth0
