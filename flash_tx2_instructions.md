@@ -70,15 +70,14 @@ cd build
 sudo make install
 ```
 
-	- Run barrier once to save fingerprint
+- Run barrier once to save fingerprint
 
 	```
 	./barrier/build/bin/barrier
 	```
 
-	- Configure barrier to start with terminator
-
-		- Right-click on terminator window, click on Preferences, within Layouts add Custom command to desired window for barrier to run on. You will need two windows: on one, choose the following command (makes mouse visible on startup) ```gsettings set org.gnome.settings-daemon.plugins.cursor active false```, while the following command goes on the second one: ```./barrier/build/bin/barrierc -f --enable-crypto 192.168.1.200```
+- Configure barrier to start with terminator
+	- Right-click on terminator window, click on Preferences, within Layouts add Custom command to desired window for barrier to run on. You will need two windows: on one, choose the following command (makes mouse visible on startup) ```gsettings set org.gnome.settings-daemon.plugins.cursor active false```, while the following command goes on the second one: ```./barrier/build/bin/barrierc -f --enable-crypto 192.168.1.200```
 
 	- Make terminator open on startup: open ```Startup Applications``` and click on Add. On the desired command, just type ```terminator```, which is the command line to start Terminator.
 
