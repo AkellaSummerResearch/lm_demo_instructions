@@ -29,7 +29,13 @@ This document shows how to flash the TX2 with all dependencies needed for the Lo
 	dns-nameservers 8.8.8.8
 	```
 	
-	- File within ```/etc/resolv.conf``` (you can create it if it doesn't exist):
+	- Configure DNS
+	
+	```
+	sudo apt-get install resolvconf
+	```
+	
+	- File within ```/etc/resolvconf/resolv.conf.d/base```:
 	
 	```
 	nameserver 8.8.4.4
