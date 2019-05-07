@@ -173,24 +173,19 @@ sudo make install
 	./build.sh
 	```
 
-- Installation of OpenCV with Cuda (Optional)
+- Installation of OpenCV with Cuda - takes over one hour (Optional - obtained from https://www.jetsonhacks.com/2018/05/28/build-opencv-3-4-with-cuda-on-nvidia-jetson-tx2/)
 
 ```
-git clone https://github.com/opencv/opencv.git
-cd opencv 
-git checkout 3.4.0
-cd ..
-git clone https://github.com/opencv/opencv_contrib.git
-cd opencv_contrib
-git checkout 3.4.0
-cd ..
-cd opencv
-mkdir build
-cd build
-cmake -D CMAKE_BUILD_TYPE=RELEASE  -D CMAKE_INSTALL_PREFIX=/usr/local  -D WITH_CUDA=ON -D ENABLE_FAST_MATH=1 -D CUDA_FAST_MATH=1  -D WITH_CUBLAS=1 -D INSTALL_PYTHON_EXAMPLES=ON -D INSTALL_C_EXAMPLES=ON -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules -D WITH_GTK=ON -D ENABLE_PRECOMPILED_HEADERS=OFF -D BUILD_EXAMPLES=ON -D WITH_TBB=ON -D WITH_V4L=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
-make -j4
-sudo make install
-sudo sh -c 'echo "/usr/local/lib" >> /etc/ld.so.conf.d/opencv.conf'
-sudo ldconfig
+cd
+git clone https://github.com/AkellaSummerResearch/buildOpenCVTX2
+cd buildOpenCVTX2
+./buildOpenCV.sh
+```
+
+```
+cd ~/catkin_ws/src
+git clone https://github.com/AkellaSummerResearch/vision_opencv.git
+cd ~/catkin_ws
+catkin_make
 ```
 
