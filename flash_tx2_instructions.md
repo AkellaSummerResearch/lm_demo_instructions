@@ -196,13 +196,11 @@ catkin_make
 ```
 git clone https://github.com/opencv/opencv.git
 cd opencv 
-git checkout 3.4.1
+git checkout 3.4.0
 cd ..
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
-git checkout 3.4.1
-git merge ec0bb66
-git cherry-pick 549b5df
+git checkout 3.4.0
 cd ..
 cd opencv
 mkdir build
