@@ -176,6 +176,8 @@ sudo make install
 - Installation of OpenCV with Cuda - takes over one hour (Optional - obtained from https://www.jetsonhacks.com/2018/05/28/build-opencv-3-4-with-cuda-on-nvidia-jetson-tx2/)
 
 ```
+sudo apt-get purge libopencv*
+sudo apt-get install ffmpeg
 cd
 git clone https://github.com/AkellaSummerResearch/buildOpenCVTX2
 cd buildOpenCVTX2
