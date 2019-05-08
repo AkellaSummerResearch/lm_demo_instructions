@@ -201,6 +201,8 @@ cd ..
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
 git checkout 3.4.1
+git merge ec0bb66
+git cherry-pick 549b5df
 cd ..
 cd opencv
 mkdir build
