@@ -127,6 +127,12 @@ sudo make install
 	./installROS.sh -p ros-kinetic-desktop -p ros-kinetic-rgbd-launch
 	./setupCatkinWorkspace.sh
 	```
+	
+	- Source the catkin folder by adding the following to the end of ```~/.bashrc```
+	
+	```
+	source ~/catkin_ws/devel/setup.bash
+	```
 
 	- Download the ```installRealSenseROSTX2``` folder and install realsense's ROS packages:
 
@@ -143,6 +149,7 @@ sudo make install
 	- Test the ROS node:
 
 	```
+	source ~/.bashrc
 	roslaunch realsense2_camera rs_rgbd.launch
 	rosrun image_view image_view image:=/camera/color/image_raw
 	```
