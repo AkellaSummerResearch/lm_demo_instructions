@@ -154,48 +154,7 @@ sudo make install
 	rosrun image_view image_view image:=/camera/color/image_raw
 	```
 
-- Install all other ROS nodes
-
-	- Nodes to be installed within catkin_ws:
-
-	```
-	cd ~/catkin_ws/src
-	git clone https://github.com/AkellaSummerResearch/batch_pose_estimator.git
-	git clone https://github.com/marcelinomalmeidan/image_filters.git
-	git clone https://github.com/radionavlab/mg_msgs.git
-	git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
-	git clone https://github.com/ros-perception/image_transport_plugins.git
-	cd ~/catkin_ws
-	catkin_make -DCMAKE_BUILD_TYPE=Release
-	```
-
-	- Install ORB-SLAM2 (this is not within catkin_ws)
-
-	- Add the following line to ```~/.bashrc```:
-
-	```
-	export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
-	```	
-
-	- Install ORB-SLAM2
-
-	```
-	sudo apt-get install libglew-dev
-	cd ~
-	git clone https://github.com/stevenlovegrove/Pangolin.git
-	cd Pangolin
-	mkdir build
-	cd build
-	cmake ..
-	cmake --build .
-	cd ~
-	git clone https://github.com/marcelinomalmeidan/ORB_SLAM2
-	source ~/.bashrc
-	cd ORB_SLAM2
-	./build.sh
-	```
-
-- Installation of OpenCV with Cuda - takes over one hour (Optional - obtained from https://www.jetsonhacks.com/2018/05/28/build-opencv-3-4-with-cuda-on-nvidia-jetson-tx2/)
+- Installation of OpenCV with Cuda - takes over one hour (obtained from https://www.jetsonhacks.com/2018/05/28/build-opencv-3-4-with-cuda-on-nvidia-jetson-tx2/)
 
 ```
 sudo apt-get purge libopencv*
@@ -237,4 +196,45 @@ git clone https://github.com/AkellaSummerResearch/vision_opencv.git
 cd ~/catkin_ws
 catkin_make
 ```
+
+- Install all other ROS nodes
+
+	- Nodes to be installed within catkin_ws:
+
+	```
+	cd ~/catkin_ws/src
+	git clone https://github.com/AkellaSummerResearch/batch_pose_estimator.git
+	git clone https://github.com/marcelinomalmeidan/image_filters.git
+	git clone https://github.com/radionavlab/mg_msgs.git
+	git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
+	git clone https://github.com/ros-perception/image_transport_plugins.git
+	cd ~/catkin_ws
+	catkin_make -DCMAKE_BUILD_TYPE=Release
+	```
+
+	- Install ORB-SLAM2 (this is not within catkin_ws)
+
+	- Add the following line to ```~/.bashrc```:
+
+	```
+	export ROS_PACKAGE_PATH=${ROS_PACKAGE_PATH}:~/ORB_SLAM2/Examples/ROS
+	```	
+
+	- Install ORB-SLAM2
+
+	```
+	sudo apt-get install libglew-dev
+	cd ~
+	git clone https://github.com/stevenlovegrove/Pangolin.git
+	cd Pangolin
+	mkdir build
+	cd build
+	cmake ..
+	cmake --build .
+	cd ~
+	git clone https://github.com/marcelinomalmeidan/ORB_SLAM2
+	source ~/.bashrc
+	cd ORB_SLAM2
+	./build.sh
+	```
 
