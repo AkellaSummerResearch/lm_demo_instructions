@@ -33,7 +33,7 @@ git clone https://github.com/AkellaSummerResearch/mav_trajectory_generation.git
 eval cd $CATKIN_PATH
 catkin_make
 
-# Install the desired versionm of mavros --------------------------------------------
+# Install the desired version of mavros --------------------------------------------
 eval cd $CATKIN_PATH/src
 git clone https://github.com/mavlink/mavros.git
 eval cd $CATKIN_PATH/src/mavros
@@ -66,7 +66,7 @@ git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
 git clone https://github.com/AkellaSummerResearch/vision_opencv.git
 git clone https://github.com/marcelinomalmeidan/image_filters.git 
 git clone https://github.com/marcelinomalmeidan/mapper.git
-git clone https://github.com/AkellaSummerResearch/p4_ros.git
+git clone --recursive https://github.com/AkellaSummerResearch/p4_ros.git
 git clone https://github.com/AkellaSummerResearch/mission_planner.git
 eval cd $CATKIN_PATH
 catkin_make
