@@ -165,6 +165,7 @@ sudo make install
 	git clone https://github.com/radionavlab/mg_msgs.git
 	git clone --recursive https://github.com/AkellaSummerResearch/darknet_ros.git
 	git clone https://github.com/ros-perception/image_transport_plugins.git
+	cd ~/catkin_ws
 	catkin_make -DCMAKE_BUILD_TYPE=Release
 	```
 
