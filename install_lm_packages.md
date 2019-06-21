@@ -6,8 +6,17 @@ cd ~/lockheed_ws
 catkin_make
 ```
 
+
 - Install dependencies for min snap path planner
 ```
+sudo apt-get install python-wstool python-catkin-tools ros-indigo-cmake-modules
+sudo apt-get install libsuitesparse-dev
+cd ~
+git clone https://github.com/RainerKuemmerle/g2o
+mkdir g2o/build
+cd build
+cmake ../
+make
 cd ~/lockheed_ws/src
 git clone https://github.com/AkellaSummerResearch/nlopt.git 
 git clone https://github.com/AkellaSummerResearch/mav_comm.git
@@ -68,6 +77,17 @@ cd ~/lockheed_ws/src/joystick_drivers
 git checkout indigo-devel
 cd ~/lockheed_ws
 catkin_make
+```
+
+- Install osqp
+```
+cd ~
+git clone --recursive https://github.com/oxfordcontrol/osqp
+cd osqp
+mkdir build
+cd build
+cmake -G "Unix Makefiles" ..
+cmake --build .
 ```
 
 - Install all other important packages
