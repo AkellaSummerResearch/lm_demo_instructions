@@ -1,3 +1,5 @@
+These are the instructions to install packages on the ground station desktop
+
 - Create catkin workspace
 
 ```
