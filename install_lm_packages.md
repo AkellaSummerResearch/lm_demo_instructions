@@ -9,7 +9,7 @@ catkin_make
 ```
 
 
-- Install dependencies for min snap path planner
+- Install dependencies for min snap motion planner
 ```
 sudo apt-get install python-wstool python-catkin-tools ros-indigo-cmake-modules
 sudo apt-get install libsuitesparse-dev
