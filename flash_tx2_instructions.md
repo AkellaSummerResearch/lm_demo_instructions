@@ -182,7 +182,9 @@ cd ..
 git clone https://github.com/opencv/opencv_contrib.git
 cd opencv_contrib
 git checkout 3.4.0
-cd ..
+cd modules
+sudo rm -rf sfm
+cd ../..
 cd opencv
 mkdir build
 cd build
