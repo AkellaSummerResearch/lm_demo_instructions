@@ -84,12 +84,15 @@ catkin_make
 - Install osqp
 ```
 cd ~
-git clone --recursive https://github.com/oxfordcontrol/osqp
+git clone https://github.com/oxfordcontrol/osqp
 cd osqp
+git checkout release-0.5.0
+git submodule update --init --recursive
 mkdir build
 cd build
 cmake -G "Unix Makefiles" ..
 cmake --build .
+sudo cmake --build . --target install
 ```
 
 - Install all other important packages
